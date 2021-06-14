@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Projeto_Rumo.Copa>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Copa</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BebidaEscolhida)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pedido.PratoDisponivel)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BebidaEscolhida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pedido.PratoDisponivel)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdCopa }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdCopa }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdCopa })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,35 @@
+﻿@model Projeto_Rumo.Cozinha
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Cozinha</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PratoEscolhido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PratoEscolhido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pedido.PratoDisponivel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pedido.PratoDisponivel)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdCozinha }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

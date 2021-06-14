@@ -46,10 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -143,7 +143,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Bar.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\CopaController.cs" />
+    <Compile Include="Controllers\CozinhaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PedidoController.cs" />
     <Compile Include="Copa.cs">
       <DependentUpon>Bar.tt</DependentUpon>
     </Compile>
@@ -211,9 +214,21 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Pedido.cshtml" />
-    <Content Include="Views\Home\Cozinha.cshtml" />
-    <Content Include="Views\Home\Copa.cshtml" />
+    <Content Include="Views\Pedido\Create.cshtml" />
+    <Content Include="Views\Pedido\Delete.cshtml" />
+    <Content Include="Views\Pedido\Details.cshtml" />
+    <Content Include="Views\Pedido\Edit.cshtml" />
+    <Content Include="Views\Pedido\Index.cshtml" />
+    <Content Include="Views\Cozinha\Create.cshtml" />
+    <Content Include="Views\Cozinha\Delete.cshtml" />
+    <Content Include="Views\Cozinha\Details.cshtml" />
+    <Content Include="Views\Cozinha\Edit.cshtml" />
+    <Content Include="Views\Cozinha\Index.cshtml" />
+    <Content Include="Views\Copa\Create.cshtml" />
+    <Content Include="Views\Copa\Delete.cshtml" />
+    <Content Include="Views\Copa\Details.cshtml" />
+    <Content Include="Views\Copa\Edit.cshtml" />
+    <Content Include="Views\Copa\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

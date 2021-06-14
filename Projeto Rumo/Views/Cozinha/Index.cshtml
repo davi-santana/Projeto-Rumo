@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Projeto_Rumo.Cozinha>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cozinha</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PratoEscolhido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pedido.PratoDisponivel)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PratoEscolhido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pedido.PratoDisponivel)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdCozinha }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdCozinha }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdCozinha })
+        </td>
+    </tr>
+}
+
+</table>

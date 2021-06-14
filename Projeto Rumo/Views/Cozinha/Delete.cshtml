@@ -1,0 +1,41 @@
+﻿@model Projeto_Rumo.Cozinha
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Cozinha</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PratoEscolhido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PratoEscolhido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pedido.PratoDisponivel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pedido.PratoDisponivel)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

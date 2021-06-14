@@ -27,20 +27,5 @@ namespace Projeto_Rumo.Controllers
             return View();
         }
 
-        public ActionResult Pedido()
-        {
-            return View();
-        }
-
-        public ActionResult Cozinha()
-        {
-            return View();
-        }
-
-        public ActionResult Copa()
-        {
-            return View();
-        }
-
     }
 }
