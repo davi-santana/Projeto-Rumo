@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="barModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Copa">
+          <Key>
+            <PropertyRef Name="IdCopa" />
+          </Key>
+          <Property Name="IdCopa" Type="int" Nullable="false" />
+          <Property Name="BebidaEscolhida" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Idpedido" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cozinha">
+          <Key>
+            <PropertyRef Name="IdCozinha" />
+          </Key>
+          <Property Name="IdCozinha" Type="int" Nullable="false" />
+          <Property Name="PratoEscolhido" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Idpedido" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pedido">
+          <Key>
+            <PropertyRef Name="IdPedido" />
+          </Key>
+          <Property Name="IdPedido" Type="int" Nullable="false" />
+          <Property Name="PratoDisponivel" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Mesa" Type="int" Nullable="false" />
+          <Property Name="NomeCliente" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Copa__Idpedido__3B75D760">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="Copa" Type="Self.Copa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="IdPedido" />
+            </Principal>
+            <Dependent Role="Copa">
+              <PropertyRef Name="Idpedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cozinha__Idpedid__38996AB5">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="Cozinha" Type="Self.Cozinha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="IdPedido" />
+            </Principal>
+            <Dependent Role="Cozinha">
+              <PropertyRef Name="Idpedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="barModelStoreContainer">
+          <EntitySet Name="Copa" EntityType="Self.Copa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cozinha" EntityType="Self.Cozinha" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pedido" EntityType="Self.Pedido" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Copa__Idpedido__3B75D760" Association="Self.FK__Copa__Idpedido__3B75D760">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="Copa" EntitySet="Copa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cozinha__Idpedid__38996AB5" Association="Self.FK__Cozinha__Idpedid__38996AB5">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="Cozinha" EntitySet="Cozinha" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="barModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Copa">
+          <Key>
+            <PropertyRef Name="IdCopa" />
+          </Key>
+          <Property Name="IdCopa" Type="Int32" Nullable="false" />
+          <Property Name="BebidaEscolhida" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Idpedido" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK__Copa__Idpedido__3B75D760" FromRole="Copa" ToRole="Pedido" />
+        </EntityType>
+        <EntityType Name="Cozinha">
+          <Key>
+            <PropertyRef Name="IdCozinha" />
+          </Key>
+          <Property Name="IdCozinha" Type="Int32" Nullable="false" />
+          <Property Name="PratoEscolhido" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Idpedido" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK__Cozinha__Idpedid__38996AB5" FromRole="Cozinha" ToRole="Pedido" />
+        </EntityType>
+        <EntityType Name="Pedido">
+          <Key>
+            <PropertyRef Name="IdPedido" />
+          </Key>
+          <Property Name="IdPedido" Type="Int32" Nullable="false" />
+          <Property Name="PratoDisponivel" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mesa" Type="Int32" Nullable="false" />
+          <Property Name="NomeCliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Copa" Relationship="Self.FK__Copa__Idpedido__3B75D760" FromRole="Pedido" ToRole="Copa" />
+          <NavigationProperty Name="Cozinha" Relationship="Self.FK__Cozinha__Idpedid__38996AB5" FromRole="Pedido" ToRole="Cozinha" />
+        </EntityType>
+        <Association Name="FK__Copa__Idpedido__3B75D760">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="Copa" Type="Self.Copa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="IdPedido" />
+            </Principal>
+            <Dependent Role="Copa">
+              <PropertyRef Name="Idpedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cozinha__Idpedid__38996AB5">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="Cozinha" Type="Self.Cozinha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="IdPedido" />
+            </Principal>
+            <Dependent Role="Cozinha">
+              <PropertyRef Name="Idpedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="barEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Copa" EntityType="Self.Copa" />
+          <EntitySet Name="Cozinha" EntityType="Self.Cozinha" />
+          <EntitySet Name="Pedido" EntityType="Self.Pedido" />
+          <AssociationSet Name="FK__Copa__Idpedido__3B75D760" Association="Self.FK__Copa__Idpedido__3B75D760">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="Copa" EntitySet="Copa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cozinha__Idpedid__38996AB5" Association="Self.FK__Cozinha__Idpedid__38996AB5">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="Cozinha" EntitySet="Cozinha" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="barModelStoreContainer" CdmEntityContainer="barEntities">
+          <EntitySetMapping Name="Copa">
+            <EntityTypeMapping TypeName="barModel.Copa">
+              <MappingFragment StoreEntitySet="Copa">
+                <ScalarProperty Name="IdCopa" ColumnName="IdCopa" />
+                <ScalarProperty Name="BebidaEscolhida" ColumnName="BebidaEscolhida" />
+                <ScalarProperty Name="Idpedido" ColumnName="Idpedido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cozinha">
+            <EntityTypeMapping TypeName="barModel.Cozinha">
+              <MappingFragment StoreEntitySet="Cozinha">
+                <ScalarProperty Name="IdCozinha" ColumnName="IdCozinha" />
+                <ScalarProperty Name="PratoEscolhido" ColumnName="PratoEscolhido" />
+                <ScalarProperty Name="Idpedido" ColumnName="Idpedido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pedido">
+            <EntityTypeMapping TypeName="barModel.Pedido">
+              <MappingFragment StoreEntitySet="Pedido">
+                <ScalarProperty Name="IdPedido" ColumnName="IdPedido" />
+                <ScalarProperty Name="PratoDisponivel" ColumnName="PratoDisponivel" />
+                <ScalarProperty Name="Mesa" ColumnName="Mesa" />
+                <ScalarProperty Name="NomeCliente" ColumnName="NomeCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
